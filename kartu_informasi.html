@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kartu Informasi</title>
+  <style>
+       body{
+                background-image: url(34.jpg);
+            }
+            img {
+  width: 300px;
+  height: 200px;
+}
+.facts-list {
+    text-align: center;
+}
+.card-fakta {
+    text-align: center;
+}
+.card-fakta {
+  width: 1000px;
+  height: 500px;
+  background-color: rgb(211, 158, 138);
+  margin: auto;
+  border-radius: 30px;
+  opacity: 0.9;
+}
+  </style>
+</head>
+<body>
+
+
+  <div class="card-fakta">
+    <img id="factImage" src="1.jpg" alt="Ilustrasi teknologi modern" />
+    <div class="content">
+      <h2>Fakta Menarik tentang Hewan</h2>
+      <p class="subtitle">Tahukah kamu fakta-fakta unik ini?</p>
+
+
+      <ul class="facts-list" id="factList">
+        <li>Gurita memiliki sembilan otak, satu di kepala dan delapan otak mini yang berada di setiap lengan—yang memungkinkannya melakukan banyak hal secara bersamaan. </li>
+        <li>Gurita adalah invertebrata paling cerdas. Mereka memiliki kemampuan memecahkan masalah, menggunakan alat, dan bahkan dapat mengenali manusia. </li>
+        <li>Darah gurita berwarna biru karena menggunakan protein berbasis tembaga bernama hemocyanin untuk mengangkut oksigen.</li>
+        <li>Gurita memiliki tiga jantung. Dua jantung memompa darah ke insang, sementara yang satu lagi memompa darah ke seluruh tubuh. Namun, jantung ini berhenti bekerja saat gurita berenang, sehingga mereka lebih cepat lelah jika harus berenang jarak jauh.</li>
+      </ul>
+
+
+      <button class="btn-next" id="nextFact">🔁 Fakta Selanjutnya</button>
+
+
+      <div class="card-footer">© 2025 | Fakta Hewan • Informatika</div>
+    </div>
+  </div>
+
+
+  <script>
+    const factData = [
+      {
+        image: "2.jpg",
+        facts: [
+          "Kecoa bisa hidup selama beberapa hari tanpa kepala karena sistem pernapasannya tidak bergantung pada kepala, melainkan pada spirakel di tubuhnya.",
+          "Kecoa dapat bertahan hidup tanpa makanan selama berminggu-minggu, bahkan hingga sebulan. ",
+          "Kecoa memiliki daya tahan yang lebih tinggi terhadap radiasi dibandingkan manusia dan hewan lain berkat kulitnya yang tebal dan sistem metabolisme yang unik. ",
+          "Kecoa termasuk serangga yang primitif tetapi memiliki kemampuan adaptasi yang sangat tinggi, membuat mereka sangat mirip dengan fosil purba yang ditemukan hingga kini. "
+         
+        ]
+      },
+      {
+        image: "3.jpg",
+        facts: [
+          "Lidah jerapah dapat mencapai panjang 45 cm dan berwarna gelap untuk melindungi dari sengatan matahari saat menjulur keluar mengambil daun. ",
+          "Jerapah hanya tidur sekitar 20 hingga 30 menit per hari, seringkali sambil berdiri untuk berjaga dari pemangsa. ",
+          "Jerapah betina melahirkan sambil berdiri, sehingga bayi jerapah akan langsung jatuh dari ketinggian sekitar 1,8 meter saat baru lahir. ",
+          "Memiliki jumlah ruas tulang leher yang sama dengan manusia, yaitu 7 ruas, tetapi masing-masing ruasnya bisa mencapai panjang sekitar 25cm. "
+        ]
+      },
+      {
+        image: "4.jpg",
+        facts: [
+          "Yang terlihat seperti tanduk sebenarnya adalah gigi seri kiri yang tumbuh memanjang keluar dari kepala, dan bisa tumbuh hingga 3 meter. ",
+          "Tanduk ini dipenuhi jutaan ujung saraf yang sangat sensitif untuk mendeteksi perubahan suhu air, salinitas, dan tekanan. ",
+          "Narwhal dapat menyelam hingga kedalaman 1.500 meter dan menahan napas hingga 25 menit. ",
+          "Mereka menggunakan sistem ekolokasi untuk menemukan makanan dengan mengirimkan gelombang suara dan mendengar gema yang kembali. "
+        ]
+      },
+      {
+        image: "5.jpg",
+        facts: [
+          "Gigi kelinci tidak pernah berhenti tumbuh. Untuk mengikisnya, mereka perlu mengunyah benda keras seperti rumput dan jerami. ",
+          " Kelinci tidak memiliki otot esofagus yang memungkinkan mereka untuk muntah.",
+          " Kelinci berkomunikasi dengan berbagai cara, termasuk melalui suara, postur tubuh, dan gerakan telinga. ",
+          "Kelinci bisa mengamati lingkungannya hingga 360 derajat tanpa harus memutar kepala karena posisi mata mereka yang ada di sisi kepala. "
+        ]
+      }
+    ];
+
+
+    const factList = document.getElementById("factList");
+    const factImage = document.getElementById("factImage");
+    const nextBtn = document.getElementById("nextFact");
+
+
+    nextBtn.addEventListener("click", () => {
+      factList.classList.add("fade-out");
+      setTimeout(() => {
+        const randomFact = factData[Math.floor(Math.random() * factData.length)];
+        factImage.style.opacity = 0;
+
+
+        setTimeout(() => {
+          factImage.src = randomFact.image;
+          factImage.style.opacity = 1;
+        }, 400);
+
+
+        factList.innerHTML = randomFact.facts.map(f => `<li>${f}</li>`).join("");
+        factList.classList.remove("fade-out");
+      }, 500);
+    });
+  </script>
+
+
+</body>
+</html>
